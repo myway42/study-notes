@@ -1,0 +1,44 @@
+解决使用display：inline-block带来的元素之间4px的空白间距。
+
+方法一：改变html结构
+原结构：
+	<ul>
+	  <li>item1</li>
+	  <li>item2</li>
+	  <li>item3</li>
+	  <li>item4</li>
+	  <li>item5</li>
+	</ul>
+改变后：
+	<ul><li>item1</li><li>item2</li><li>item3</li><li>item4</li><li>item5</li></ul>
+
+方法二：负margin
+	ul {
+			font-size: 12px;
+		}
+		ul li {
+			margin-right: -4px;
+			*margin-right: 0;
+		}
+这种解决方法并不完美，如果你的父元素设置的字号不一样，可能你的“-4px”就不能解决问题。况且在Chrome中你需要另外设置一个负的margin值才能实现同等的效果。
+
+方法三：设置父元素字体为0
+第三种方法设置父元素的字体为“0”，然后在“inline-block”元素上重置字体需要的大小。使用letter-space:-N px来兼容safari。
+	.finally-solve {
+	  letter-spacing: -4px;/*根据不同字体字号或许需要做一定的调整*/
+	  word-spacing: -4px;
+	  font-size: 0;
+	}
+	.finally-solve li {
+	  font-size: 16px;
+	  letter-spacing: normal;
+	  word-spacing: normal;
+	  display:inline-block;
+	  *display: inline;
+	  zoom:1;
+	}
+
+方法四：最后一种方法是通过jQuery来改变“nodeType”的值，从而实现我们需要的效果。
+	$('.removeTextNodes').contents().filter(function() {
+    return this.nodeType === 3;
+	}).remove();

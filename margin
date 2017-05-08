@@ -1,0 +1,34 @@
+#margin
+
+margin的百分比都是相对于容器的宽度计算！
+可根据此实现宽高2:1自适应矩形：
+.box{  background:#00CC66; overflow: hidden;}
+.box>div{ margin:50%; }
+
+margin重叠只发生在垂直方向（不考虑writing-mode）的block元素上。
+重叠的3种情况：
+1.相邻的兄弟元素
+2.父级和第一个/最后一个子元素
+3.空的block元素（和自己）
+重叠的计算规则：
+1.正正取大值
+2.正负值相加
+3.负负最负值
+使用：
+元素上下都设置margin值，使上下重叠 → 更具有健壮性，最后一个元素移除或者位置调换，不会破坏原来布局。
+
+margin auto
+元素不设置宽度，宽度自动填满容器；设置宽度后，使用auto自动填充原本的空间。
+高度不会自动填充，因为margin{auto 0；}垂直居中无效。
+利用绝对定位实现水平垂直居中：
+.father{height:200px; position:relative;}
+.son{position:absolute; top:0;bottom:0;left:0;right:0 width:500px; height:100px; margin:auto;}
+原理：是宽高都能自动填满容器。（不适用ie6、ie7）
+
+margin负值
+实现两端对齐:
+.box{width:1200; margin:auto; background:orange;}
+.ul{overflow:hidden; margin-right:-20px;}
+.li{width:386.66px; height:300px; margin-right:20px; bacground:green; float:lefe;}
+实现等高布局:
+利用margin-bottom负值改变原来占据的空间，再利用padding-bottom正值补回因为margin失去的空间。（外部容器需要使用overflow:hidden;)
