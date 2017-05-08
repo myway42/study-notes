@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var str = 'aadsafdbaabsdafsdsddbbchjkoifbbpoaufponjzbbchfja';
+
+        // function test(str) {
+        // 	var obj = {};
+        // 	var count = 0;
+        // 	var value = [];
+        // 	for (var i=0;i<str.length;i++) {
+        // 		if (!obj[str[i]]) {
+        // 			obj[str[i]] = [];
+        // 		}
+        // 		obj[str[i]].push(str[i]);
+        // 		}
+        // 	for (var attr in obj) {
+        // 		if (count < obj[attr].length) {
+        // 			count = obj[attr].length;
+        // 		}
+        // 	}
+        // 	for (attr in obj) {
+        // 		if (count === obj[attr].length) {
+        // 			value.push(obj[attr][0]);
+        // 		}
+        // 	}
+        // 	return '出现最多的是'+value+',出现次数'+count;
+        // }
+        
+        // function test(str) {
+        // 	var obj = {};
+        // 	var count = 0;
+        // 	var value = [];
+        // 	for (var i=0;i<str.length;i++) {
+        // 		obj[str[i]] = str.split(str[i]);
+        // 	}
+        // 	for (var attr in obj) {
+        // 		if (count < obj[attr].length) {
+        // 			count = obj[attr].length;
+        // 		}
+        // 	}
+        // 	for (attr in obj) {
+        // 		if (count === obj[attr].length) {
+        // 			value.push(attr);
+        // 		}
+        // 	}
+        // 	count = count-1;
+        // 	return '出现最多的是'+value+',出现次数'+count;
+        // }
+        
+        function test(str) {
+        	var arr = str.split('');
+        	arr.sort();
+        	str = arr.join('');
+        	var re = /(\w)\1+/g;
+        	var count = 0;
+        	var value = [];
+        	str.replace(re, function ($1, $2) {
+        		if (count < $1.length) {
+        			count = $1.length;
+        		}
+        	});
+        	str.replace(re, function ($1, $2) {
+        		if (count === $1.length) {
+        			value.push($2);
+        		}
+        	});
+        	return '出现最多的是'+value+',出现次数'+count;
+        }
+
+        alert(test(str));
+    </script>
+</body>
+</html>

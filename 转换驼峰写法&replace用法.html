@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    var str = 'border-bottom-color';
+
+    // function test(str) {
+    //     var arr = str.split('-');
+    //     for (var i=1;i<arr.length;i++) {
+    //         arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].substring(1);
+    //     }
+    //     return arr.join('');
+    // }
+    
+    function test(str) {
+        var re = /-(\w)/g;
+        //replace(re,fn)中fn第一个参数为匹配到的字符串,如-b和-c; 
+        //第二个参数可以有0-N个,为第一个参数中匹配到括号内的字符串,如第一个参数中的b和c,括号有几组,参数有几个; 
+　　    //第三个参数为第一个参数中匹配到的字符串所在位置,如-b返回6; 
+　　    //第四个参数为用来匹配的字符串,在这个例子中就是border-bottom-color. 
+        str = str.replace(re, function ($1, $2) {
+            return $2.toUpperCase();
+        });
+        return str;
+    }
+
+    alert(test(str));
+    </script>
+</body>
+</html>

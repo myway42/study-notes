@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var str = '229807309857109479';
+
+        // function test(str) {
+        //     var num = str.length % 3;
+        //     var arr = [];
+        //     var count = 0;
+        //     var value = '';
+        //     if (num) {
+        //         var prev = str.substring(0, num);
+        //         arr.push(prev);
+        //         str = str.substring(num);
+        //     }
+        //     for (var i=0;i<str.length;i++) {
+        //         count++;
+        //         value += str[i];
+        //         if (count === 3) {
+        //             arr.push(value);
+        //             count = 0;
+        //             value = '';
+        //         }
+        //     }
+        //     return arr.join(',');
+        // }
+        
+        function test(str) {
+            // var x = cabacad;匹配正则,替换成*
+            // /a(?=b)/ 前向声明(先行断言):与后跟b的a匹配,即c*bacad;
+            // /a(?!b)/ 反前向声明(负先行断言):与后不跟b的a匹配,即cab*c*d;
+            // js不支持 /(?<=c)a/ 后向声明(后发断言):与前跟c的a匹配,即c*bacad;
+            // js不支持 /(?<!c)a/ 反后向声明(负后发断言):与前不跟c的a匹配,即cab*cad;
+            var re = /(?!\b)(?=(\d{3})+$)/g;
+            return str.replace(re, ',');
+        }
+
+        alert(test(str));
+    </script>
+</body>
+</html>
