@@ -1,0 +1,77 @@
+/*分隔线*/
+
+单个标签实现分隔线：
+.demo_line_01{
+    padding: 0 20px 0;
+    margin: 20px 0;
+    line-height: 1px;
+    border-left: 200px solid #ddd;
+    border-right: 200px solid #ddd;
+    text-align: center;
+}
+优点：代码简洁
+
+巧用背景色实现分隔线：
+.demo_line_02{
+    height: 1px;
+    border-top: 1px solid #ddd;
+    text-align: center;
+}
+.demo_line_02 span{
+    position: relative;
+    top: -8px;
+    background: #fff;
+    padding: 0 20px;
+}
+优点：代码简洁，可自适应宽度
+
+inline-block实现分隔线：
+.demo_line_03{
+    width:600px;
+}
+.demo_line_03 b{
+    background: #ddd;
+    margin-top: 4px;
+    display: inline-block;
+    width: 180px;
+    height: 1px;
+    overflow: hidden;
+    vertical-align: middle;
+}
+.demo_line_03 span{
+    display: inline-block;
+    width: 220px;
+    vertical-align: middle;
+}
+优点：文字可多行
+
+浮动实现分隔线：
+.demo_line_04{
+    width:600px;
+}
+.demo_line_04{
+    overflow: hidden;
+    zoom: 1;
+}
+.demo_line_04 b{
+    background: #ddd;
+    margin-top: 8px;
+    float: left;
+    width: 26%;
+    height: 1px;
+    overflow: hidden;
+}
+优点：NUN
+
+利用字符实现分隔线：
+<div class="demo_line_05">———————————<span>小小分隔线 字符来实现</span>————————————</div>
+.demo_line_05{
+    letter-spacing: -1px;
+    color: #ddd;
+}
+.demo_line_05 span{
+    letter-spacing: 0;
+    color: #222;
+    margin:0 20px;
+}
+优点：代码简洁
