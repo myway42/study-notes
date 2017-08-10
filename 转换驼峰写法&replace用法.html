@@ -23,7 +23,9 @@
 　　    //第三个参数为第一个参数中匹配到的字符串所在位置,如-b返回6; 
 　　    //第四个参数为用来匹配的字符串,在这个例子中就是border-bottom-color. 
         str = str.replace(re, function ($1, $2) {
+            alert($1);
             return $2.toUpperCase();
+            
         });
         return str;
     }
